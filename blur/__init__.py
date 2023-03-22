@@ -4,7 +4,7 @@ from typing import List
 
 import pyperclip
 import win32clipboard
-from PIL import ImageGrab, Image, ImageDraw, ImageFilter
+from PIL import ImageGrab, Image, ImageDraw, ImageFilter, ImageEnhance
 import random
 
 
@@ -24,6 +24,7 @@ def process(im):
         width, height = im.size
         dots_per_pixel = 8
         im = im.filter(ImageFilter.GaussianBlur(1))
+        im = ImageEnhance.Contrast(im).enhance(0.5)
         draw = ImageDraw.Draw(im)
         for x in range(int(width / dots_per_pixel)):
             for y in range(int(height / dots_per_pixel)):
