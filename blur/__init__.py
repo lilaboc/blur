@@ -79,7 +79,7 @@ def process_text(text):
     d = {}
     for i, o in zip(str1, hx):
         d[i] = o
-    result = ''.join([d[i] if i in d else i for i in text ])
+    result = ''.join([d[i] if i in d else i for i in text])
     print(result)
     pyperclip.copy(result)
 
