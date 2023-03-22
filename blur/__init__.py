@@ -9,9 +9,8 @@ from PIL import ImageGrab, Image, ImageDraw, ImageFilter, ImageEnhance, ImageOps
 import random
 
 class WaveDeformer:
-
     def transform(self, x, y):
-        y = y + 10*math.sin(x/40)
+        y = y + 10 * math.sin(x / 40)
         return x, y
 
     def transform_rectangle(self, x0, y0, x1, y1):
@@ -62,7 +61,7 @@ def process(im):
                 # draw.point((random.randint(0, width), random.randint(0, height)), fill="white")
         for i in range(int(width / dots_per_pixel)):
             draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='white' if i % 2 == 0 else 'grey', width=2)
-        for i in range(int(height/ dots_per_pixel)):
+        for i in range(int(height / dots_per_pixel)):
             draw.line((0, dots_per_pixel * i, width, dots_per_pixel * i), fill='white' if i % 2 == 0 else 'grey', width=2)
 
         send_to_clipboard(im)
