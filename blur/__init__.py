@@ -5,6 +5,8 @@ from typing import List
 import win32clipboard
 from PIL import ImageGrab, Image, ImageDraw, ImageFilter
 import random
+
+
 def send_to_clipboard(im):
     output = BytesIO()
     im.convert("RGB").save(output, "BMP")
@@ -27,6 +29,7 @@ def process(im):
                 draw.point((random.randint(0, width), random.randint(0, height)), fill="black")
                 draw.point((random.randint(0, width), random.randint(0, height)), fill="grey")
                 draw.point((random.randint(0, width), random.randint(0, height)), fill="red")
+                draw.point((random.randint(0, width), random.randint(0, height)), fill="white")
         send_to_clipboard(im)
     except Exception as exp:
         print(exp)
