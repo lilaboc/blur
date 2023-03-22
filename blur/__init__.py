@@ -48,9 +48,9 @@ def process(im):
     try:
         width, height = im.size
         dots_per_pixel = 13
-        im = ImageOps.grayscale(im)
+        # im = ImageOps.grayscale(im)
         # im = im.filter(ImageFilter.GaussianBlur(1))
-        im = ImageEnhance.Contrast(im).enhance(0.9)
+        im = ImageEnhance.Contrast(im).enhance(0.5)
         im = ImageOps.deform(im, WaveDeformer())
         draw = ImageDraw.Draw(im)
         # for x in range(int(width / dots_per_pixel)):
@@ -60,9 +60,11 @@ def process(im):
                 # draw.point((random.randint(0, width), random.randint(0, height)), fill="red")
                 # draw.point((random.randint(0, width), random.randint(0, height)), fill="white")
         for i in range(int(width / dots_per_pixel)):
-            draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='white' if i % 2 == 0 else 'grey', width=2)
+            # draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='lightgray' if i % 2 == 0 else 'gray', width=2)
+            draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='gray', width=2)
         for i in range(int(height / dots_per_pixel)):
-            draw.line((0, dots_per_pixel * i, width, dots_per_pixel * i), fill='white' if i % 2 == 0 else 'grey', width=2)
+            # draw.line((0, dots_per_pixel * i, width, dots_per_pixel * i), fill='lightgray' if i % 2 == 0 else 'gray', width=2)
+            draw.line((0, dots_per_pixel * i, width, dots_per_pixel * i), fill='gray', width=2)
 
         send_to_clipboard(im)
     except Exception as exp:
