@@ -66,7 +66,6 @@ def process(im):
             draw.line((0, dots_per_pixel * i, width, dots_per_pixel * i), fill='white' if i % 2 == 0 else 'grey', width=2)
 
         send_to_clipboard(im)
-        im.show()
     except Exception as exp:
         print(exp)
         input()
