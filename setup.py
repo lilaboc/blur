@@ -22,5 +22,6 @@ setup(
         'console_scripts': [
             'blur= blur:main',
         ],
-    }
+    },
+    package_data={'blur': ['martian.txt']}
 )
