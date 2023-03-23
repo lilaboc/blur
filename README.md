@@ -9,6 +9,8 @@ Just copy any image or text into clipboard and run blur, it will convert image t
 
 ## image
 
+![163.com](./images/163_before.png)
+
 ![163.com](./images/163.png)
 
 ## text
