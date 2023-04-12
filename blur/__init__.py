@@ -1,4 +1,5 @@
 import os.path
+import random
 from io import BytesIO
 from typing import List
 
@@ -6,6 +7,7 @@ import math
 import pyperclip
 import win32clipboard
 from PIL import ImageGrab, Image, ImageDraw, ImageEnhance, ImageOps
+import re
 
 
 # https://medium.com/geekculture/deforming-images-in-python-66e0d0dcb17f
@@ -74,6 +76,24 @@ def process(im):
         input()
 
 
+def process_text1(text):
+    # https://www.zhihu.com/question/20428571
+    if len(text) <= 2:
+        return text
+    pattern = '([A-Za-z]+|的)'
+    result = text[:2]
+    for i in re.split(pattern, text[2:], re.I|re.M|re.S):
+        if re.match(pattern, i):
+            result += i
+        else:
+            it = iter(i)
+            for x in it:
+                try:
+                    result += next(it) + x
+                except StopIteration:
+                    result += x
+    pyperclip.copy(result)
+
 def process_text(text):
     # https://github.com/pilipala233/MartianText/
     with open(os.path.dirname(os.path.realpath(__file__)) + os.sep + 'martian.txt', 'r', encoding='utf-8') as f:
@@ -98,7 +118,8 @@ def main():
             print(exp)
             input()
     else:
-        process_text(pyperclip.paste())
+        random.choice([process_text, process_text1])(pyperclip.paste())
+        # process_text(pyperclip.paste())
 
 
 if __name__ == '__main__':
