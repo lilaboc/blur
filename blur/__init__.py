@@ -58,11 +58,11 @@ def process(im):
         im = ImageOps.deform(im, WaveDeformer())
         draw = ImageDraw.Draw(im)
         # for x in range(int(width / dots_per_pixel)):
-            # for y in range(int(height / dots_per_pixel)):
-                # draw.point((random.randint(0, width), random.randint(0, height)), fill="black")
-                # draw.point((random.randint(0, width), random.randint(0, height)), fill="grey")
-                # draw.point((random.randint(0, width), random.randint(0, height)), fill="red")
-                # draw.point((random.randint(0, width), random.randint(0, height)), fill="white")
+        # for y in range(int(height / dots_per_pixel)):
+        # draw.point((random.randint(0, width), random.randint(0, height)), fill="black")
+        # draw.point((random.randint(0, width), random.randint(0, height)), fill="grey")
+        # draw.point((random.randint(0, width), random.randint(0, height)), fill="red")
+        # draw.point((random.randint(0, width), random.randint(0, height)), fill="white")
         for i in range(int(width / dots_per_pixel)):
             # draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='lightgray' if i % 2 == 0 else 'gray', width=2)
             draw.line((dots_per_pixel * i, 0, dots_per_pixel * i, height), fill='gray', width=2)
@@ -82,7 +82,7 @@ def process_text1(text):
         return text
     pattern = '([A-Za-z]+|的)'
     result = text[:2]
-    for i in re.split(pattern, text[2:], re.I|re.M|re.S):
+    for i in re.split(pattern, text[2:], re.I | re.M | re.S):
         if re.match(pattern, i):
             result += i
         else:
@@ -93,6 +93,7 @@ def process_text1(text):
                 except StopIteration:
                     result += x
     pyperclip.copy(result)
+
 
 def process_text(text):
     # https://github.com/pilipala233/MartianText/
@@ -124,5 +125,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
