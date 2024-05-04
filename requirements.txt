@@ -1,4 +1,0 @@
--i https://pypi.org/simple
-pillow==10.0.1; python_version >= '3.8'
-pyperclip==1.8.2
-pywin32==306

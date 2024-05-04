@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "blur"
+version = "0.1.0"
+description = ""
+authors = ["'Zhou <lilaboc.cn@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pillow = "^10.3.0"
+pywin32 = "^306"
+pyperclip = "^1.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+tomac = "blur:main"
