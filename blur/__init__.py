@@ -1,9 +1,9 @@
 import os.path
 import random
+import tempfile
 from io import BytesIO
 from typing import List
 from skimage.filters import gaussian
-
 import math
 import pyperclip
 import win32clipboard
@@ -115,6 +115,10 @@ def process_text(text):
 
 
 def process_video(filepath):
+    # create a temporary directory and change working directory to
+    # that directory
+    temp_dir = tempfile.mkdtemp()
+    os.chdir(temp_dir)
     video = VideoFileClip(filepath)
     video_blurred = video.fl_image(_blur)
     txt_clip = VideoFileClip(os.path.dirname(os.path.realpath(__file__)) + os.sep + 'warning.mp4')
@@ -123,8 +127,8 @@ def process_video(filepath):
     video_out = concatenate_videoclips([txt_clip, video_blurred, txt_clip], method="compose")
     # video_out = CompositeVideoClip([video_blurred, txt_clip])
     # video_out = CompositeVideoClip([txt_clip, video_blurred])
-    filename, file_extension = os.path.splitext(filepath)
-    output_path = filename + "_blurred" + file_extension
+    filename, file_extension = os.path.splitext(os.path.basename(filepath))
+    output_path = os.path.join(temp_dir, filename + "_blurred" + file_extension)
     video_out.write_videofile(output_path)
     send_video_to_clipboard(output_path)
 
