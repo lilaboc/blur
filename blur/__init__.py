@@ -163,7 +163,7 @@ def test():
     from moviepy.config import change_settings
     change_settings({"IMAGEMAGICK_BINARY": r"C:\Users\stern\scoop\apps\imagemagick\current\magick.EXE"})
     print(TextClip.list('font'))
-    txt_clip = (TextClip("这些都是什么?", fontsize=70, color='white', font='华文宋体')
+    txt_clip = (TextClip("看不懂这是什么", fontsize=70, color='white', font='华文宋体')
                 .set_position('center')
                 .set_duration(2))
     txt_clip.write_videofile("warning.mp4", fps=24)
