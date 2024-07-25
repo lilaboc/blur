@@ -129,7 +129,7 @@ def process_video(filepath):
     # video_out = CompositeVideoClip([txt_clip, video_blurred])
     filename, file_extension = os.path.splitext(os.path.basename(filepath))
     output_path = os.path.join(temp_dir, filename + "_blurred" + file_extension)
-    video_out.write_videofile(output_path)
+    video_out.write_videofile(output_path, threads=2)
     send_video_to_clipboard(output_path)
 
 # copy video file into clipboard using winclipboard32
