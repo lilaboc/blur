@@ -1,5 +1,6 @@
 import os.path
 import random
+import string
 import tempfile
 from io import BytesIO
 from typing import List
@@ -83,22 +84,26 @@ def send_video_to_clipboard(path):
     print(cmd)
     os.system(cmd)
 
+
+def _change(seg):
+    for i in range(0, int(len(seg) / 3)):
+        seg[i * 3], seg[i * 3 + 1] = seg[i * 3 + 1], seg[i * 3]
+    return seg
+
+
 def process_text1(text):
     # https://www.zhihu.com/question/20428571
-    if len(text) <= 2:
-        return text
-    pattern = '([A-Za-z]+|的)'
-    result = text[:2]
-    for i in re.split(pattern, text[2:], re.I | re.M | re.S):
-        if re.match(pattern, i):
-            result += i
+    result = ""
+    seg = []
+    for i in text:
+        if re.match(r'[\u4e00-\u9fff]+', i, re.I|re.M|re.S):
+            seg.append(i)
         else:
-            it = iter(i)
-            for x in it:
-                try:
-                    result += next(it) + x
-                except StopIteration:
-                    result += x
+            result += ''.join(_change(seg))
+            seg = []
+            result += i
+    if len(seg) != 0:
+        result += ''.join(_change(seg))
     pyperclip.copy(result)
 
 
@@ -176,4 +181,5 @@ def fonts():
 
 
 if __name__ == '__main__':
+    # process_text1("没有镜头感画质不好看怎么办?(专业摄像师上门拍摄，1天至少出片60条")
     main()
