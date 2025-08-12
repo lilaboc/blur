@@ -6,7 +6,7 @@ authors = ["'Zhou <lilaboc.cn@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 pillow = "9.5.0"
 pywin32 = "^306"
 pyperclip = "^1.8.2"

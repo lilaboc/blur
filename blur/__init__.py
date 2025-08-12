@@ -141,7 +141,7 @@ def process_video(filepath):
 
 def _blur(image):
     """ Returns a blurred (radius=2 pixels) version of the image """
-    return gaussian(image.astype(float), sigma=2)
+    return gaussian(image.astype(float), sigma=1)
 
 def main():
     im = ImageGrab.grabclipboard()
