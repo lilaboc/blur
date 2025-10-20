@@ -129,7 +129,8 @@ def process_video(filepath):
     txt_clip = VideoFileClip(os.path.dirname(os.path.realpath(__file__)) + os.sep + 'warning.mp4')
     # txt_clip.resize(height=video_blurred.h, resample=Image.LANCZOS)
     # txt_clip.resize(height=video_blurred.h)
-    video_out = concatenate_videoclips([txt_clip, video_blurred, txt_clip], method="compose")
+    # video_out = concatenate_videoclips([txt_clip, video_blurred, txt_clip], method="compose")
+    video_out = video_blurred
     # video_out = CompositeVideoClip([video_blurred, txt_clip])
     # video_out = CompositeVideoClip([txt_clip, video_blurred])
     filename, file_extension = os.path.splitext(os.path.basename(filepath))
