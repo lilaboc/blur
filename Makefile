@@ -1,4 +1,2 @@
 install:
-#	python3 -m pip install --upgrade pip
-#	python3 -m pip install -e .
-	pipx install --force -e .
+	uv pip install -e .

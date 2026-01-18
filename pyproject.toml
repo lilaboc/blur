@@ -1,23 +1,24 @@
-[tool.poetry]
+[project]
 name = "blur"
 version = "0.1.0"
 description = ""
-authors = ["'Zhou <lilaboc.cn@gmail.com>"]
+authors = [
+    {name = "Zhou", email = "lilaboc.cn@gmail.com"}
+]
 readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pillow==9.5.0",
+    "pywin32>=306",
+    "pyperclip>=1.8.2",
+    "loguru>=0.7.2",
+    "moviepy>=1.0.3",
+    "scikit-image>=0.24.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-pillow = "9.5.0"
-pywin32 = "^306"
-pyperclip = "^1.8.2"
-loguru = "^0.7.2"
-moviepy = "^1.0.3"
-scikit-image = "^0.24.0"
-
+[project.scripts]
+blur = "blur:main"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-blur = "blur:main"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
