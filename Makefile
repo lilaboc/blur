@@ -1,2 +1,2 @@
 install:
-	uv pip install -e .
+	uv tool install .
