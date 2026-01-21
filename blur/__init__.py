@@ -12,7 +12,7 @@ from PIL import ImageGrab, Image, ImageDraw, ImageEnhance, ImageOps
 import re
 from loguru import logger
 import os
-from moviepy.editor import *
+from moviepy import VideoFileClip, TextClip, concatenate_videoclips, CompositeVideoClip
 
 
 # https://medium.com/geekculture/deforming-images-in-python-66e0d0dcb17f
