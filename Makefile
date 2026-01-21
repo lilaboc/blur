@@ -1,2 +1,2 @@
 install:
-	uv tool install .
+	uv tool install -e .
