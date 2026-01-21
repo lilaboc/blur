@@ -8,7 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "pillow==9.5.0",
+    "pillow>=10.0.0",
     "pywin32>=306",
     "pyperclip>=1.8.2",
     "loguru>=0.7.2",
