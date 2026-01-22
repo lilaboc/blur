@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-blur = "blur:main"
+blur = "blur.main:main"
 
 [build-system]
 requires = ["hatchling"]
