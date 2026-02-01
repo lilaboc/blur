@@ -3,12 +3,7 @@ import tempfile
 from moviepy import VideoFileClip
 from loguru import logger
 from blur.image import _blur
-
-
-def send_video_to_clipboard(path):
-    cmd = f"powershell Set-Clipboard -Path '{path}'"
-    print(cmd)
-    os.system(cmd)
+from blur.clipboard import send_video_to_clipboard
 
 
 def process_video(filepath):

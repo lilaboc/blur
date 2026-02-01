@@ -4,6 +4,13 @@ Just clone the code and run "make", it will install "blur" command into your sys
 
 Just copy any image or text into clipboard and run blur, it will convert image to blured version
 
+# Requirements
+
+## Linux
+- For Wayland: `wl-clipboard` (install with `sudo apt install wl-clipboard` or equivalent)
+- For X11: `xclip` (install with `sudo apt install xclip` or equivalent)
+- ImageMagick (optional, for moviepy text features)
+
 
 # Example
 
