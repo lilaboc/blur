@@ -6,7 +6,7 @@ from PIL import ImageGrab, Image
 from loguru import logger
 from moviepy import VideoFileClip, TextClip
 from blur.image import process_image
-from blur.text import process_text, process_text1
+from blur.text import translate_with_martian, scramble_chinese_text
 from blur.video import process_video
 
 
@@ -26,7 +26,7 @@ def main():
             logger.exception('error')
             input()
     else:
-        random.choice([process_text, process_text1])(pyperclip.paste())
+        random.choice([translate_with_martian, scramble_chinese_text])(pyperclip.paste())
 
 
 def test():

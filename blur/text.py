@@ -69,8 +69,3 @@ def translate_with_martian(text):
     result = ''.join(mapping.get(char, char) for char in text)
     pyperclip.copy(result)
     return result
-
-
-# 保留向后兼容的别名
-process_text1 = scramble_chinese_text
-process_text = translate_with_martian
