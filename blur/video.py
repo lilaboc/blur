@@ -1,5 +1,6 @@
 import os
 import tempfile
+from pathlib import Path
 from moviepy import VideoFileClip
 from loguru import logger
 from blur.image import _blur
@@ -12,7 +13,7 @@ def process_video(filepath):
     video = VideoFileClip(filepath)
     video_blurred = video.fl_image(_blur)
     video_out = video_blurred
-    filename, file_extension = os.path.splitext(os.path.basename(filepath))
-    output_path = os.path.join(temp_dir, filename + "_blurred" + file_extension)
-    video_out.write_videofile(output_path, threads=2)
-    send_video_to_clipboard(output_path)
+    filepath_path = Path(filepath)
+    output_path = Path(temp_dir) / f"{filepath_path.stem}_blurred{filepath_path.suffix}"
+    video_out.write_videofile(str(output_path), threads=2)
+    send_video_to_clipboard(str(output_path))

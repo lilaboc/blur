@@ -1,7 +1,7 @@
-import os
 import random
-import pyperclip
+from pathlib import Path
 from typing import List
+import pyperclip
 from PIL import ImageGrab, Image
 from loguru import logger
 from moviepy import VideoFileClip, TextClip
@@ -14,14 +14,13 @@ def main():
     im = ImageGrab.grabclipboard()
     if isinstance(im, Image.Image):
         process_image(im)
-    elif isinstance(im, List) and isinstance(im[0], str) and os.path.exists(im[0]):
-        filepath = im[0]
-        filename, file_extension = os.path.splitext(filepath)
+    elif isinstance(im, List) and isinstance(im[0], str) and Path(im[0]).exists():
+        filepath = Path(im[0])
         try:
-            if file_extension in ['.mp4', '.avi']:
-                process_video(filepath)
+            if filepath.suffix in ['.mp4', '.avi']:
+                process_video(str(filepath))
             else:
-                im = Image.open(filepath)
+                im = Image.open(str(filepath))
                 process_image(im)
         except Exception as exp:
             logger.exception('error')
